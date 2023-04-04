@@ -39,15 +39,18 @@ func initConfig(cfgFile string) func() {
 	return func() {
 		viper.SetDefault("server", "https://xgob.in")
 		viper.SetDefault("formatter", "terminal16m")
+		viper.SetDefault("tokens", map[string][]string{})
 		if cfgFile != "" {
 			viper.SetConfigFile(cfgFile)
 		} else {
-			home, err := os.UserHomeDir()
-			cobra.CheckErr(err)
+			//home, err := os.UserHomeDir()
+			//if err != nil {
+			//	home = "."
+			//}
 
 			viper.SetConfigName(".gobin")
-			viper.SetConfigType("env")
-			viper.AddConfigPath(home)
+			viper.SetConfigType("yaml")
+			viper.AddConfigPath(".")
 		}
 		viper.SetEnvPrefix("gobin")
 		viper.AutomaticEnv()

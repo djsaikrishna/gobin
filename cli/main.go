@@ -17,6 +17,8 @@ func main() {
 	cmd.NewGetCmd(rootCmd)
 	cmd.NewPushCmd(rootCmd)
 	cmd.NewRmCmd(rootCmd)
+	cmd.NewImportCmd(rootCmd)
+	cmd.NewShareCmd(rootCmd)
 	cmd.NewVersionCmd(rootCmd, gobin.FormatBuildVersion(version, commit, buildTime))
 	cmd.NewCompletionCmd(rootCmd)
 	cmd.Execute(rootCmd)
